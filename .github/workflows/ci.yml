@@ -9,8 +9,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
@@ -43,3 +43,35 @@ jobs:
           name: playwright-artifacts
           path: fixtures/test-results/
           retention-days: 7
+
+  release:
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # push the version bump, the changelog and the git tag
+      issues: write # comment on issues included in the release
+      pull-requests: write # comment on the PRs included in the release
+      id-token: write # mint the OIDC token npm trusts instead of a secret
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0 # semantic-release reads the whole history to find the last release
+          persist-credentials: false
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      # setup-node ships an npm too old to speak OIDC. Trusted publishing needs >= 11.5.1.
+      - run: npm install -g npm@latest
+
+      - run: npm ci
+
+      # No NPM_TOKEN here on purpose: with one set, semantic-release takes the token path
+      # and never attempts trusted publishing.
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release

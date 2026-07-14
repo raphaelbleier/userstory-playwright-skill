@@ -61,6 +61,25 @@ selector. If you have heuristics from real use, they belong there.
 Include: the agent CLI and version, Node version, what you asked for, what landed in the sheet,
 and what you expected. If a spec was generated wrong, paste it.
 
+## Commits
+
+Releases are automatic, and they are driven by your commit messages. Use
+[Conventional Commits](https://www.conventionalcommits.org):
+
+| Prefix | Effect on the next release |
+|---|---|
+| `fix: …` | patch — `0.2.1` |
+| `feat: …` | minor — `0.3.0` |
+| `feat!: …` or a `BREAKING CHANGE:` footer | major |
+| `docs: …`, `chore: …`, `refactor: …`, `test: …` | no release |
+
+A merge to `main` runs the tests; if they pass and the commits since the last release warrant a
+version bump, CI publishes to npm, tags the commit, writes `CHANGELOG.md` and opens a GitHub
+Release. Nobody bumps a version by hand, and `npm publish` is never run from a laptop.
+
+The corollary: a commit that isn't prefixed ships nothing. If your fix should reach users, say
+`fix:`.
+
 ## Style
 
 Match what's there. No build step, no TypeScript in `scripts/`, no dependencies beyond `exceljs`.
