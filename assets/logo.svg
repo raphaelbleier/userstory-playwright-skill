@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="A user story document becoming a grid of test results, one of them failing">
+  <!-- Self-contained tile: the mark carries its own background, so it reads on a light
+       or a dark README without needing two variants. -->
+  <rect width="512" height="512" rx="112" fill="#0F172A"/>
+
+  <!-- The user story: a written document. -->
+  <g>
+    <rect x="72" y="131" width="190" height="250" rx="20" fill="#F8FAFC"/>
+    <rect x="100" y="186" width="120" height="13" rx="6.5" fill="#64748B"/>
+    <rect x="100" y="228" width="120" height="13" rx="6.5" fill="#64748B"/>
+    <rect x="100" y="270" width="78"  height="13" rx="6.5" fill="#64748B"/>
+  </g>
+
+  <!-- It becomes test results. Eight pass. One does not — that is the whole point of the tool,
+       so the red cell sits dead centre of the grid. -->
+  <g>
+    <rect x="250" y="147" width="66" height="66" rx="15" fill="#10B981"/>
+    <rect x="326" y="147" width="66" height="66" rx="15" fill="#10B981"/>
+    <rect x="402" y="147" width="66" height="66" rx="15" fill="#10B981"/>
+
+    <rect x="250" y="223" width="66" height="66" rx="15" fill="#10B981"/>
+    <rect x="326" y="223" width="66" height="66" rx="15" fill="#EF4444"/>
+    <rect x="402" y="223" width="66" height="66" rx="15" fill="#10B981"/>
+
+    <rect x="250" y="299" width="66" height="66" rx="15" fill="#10B981"/>
+    <rect x="326" y="299" width="66" height="66" rx="15" fill="#10B981"/>
+    <rect x="402" y="299" width="66" height="66" rx="15" fill="#10B981"/>
+  </g>
+</svg>

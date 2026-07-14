@@ -1,4 +1,20 @@
-# userstory-playwright-skill
+<p align="center">
+  <img src="https://raw.githubusercontent.com/raphaelbleier/userstory-playwright-skill/main/assets/logo.png" alt="userstory-playwright-skill" width="120">
+</p>
+
+<h1 align="center">userstory-playwright-skill</h1>
+
+<p align="center">
+  <em>Your codebase, as user stories. Your user stories, as passing tests — and the one that isn't.</em>
+</p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/userstory-playwright-skill"><img src="https://img.shields.io/npm/v/userstory-playwright-skill?color=10B981" alt="npm"></a>
+  <a href="https://github.com/raphaelbleier/userstory-playwright-skill/actions/workflows/ci.yml"><img src="https://github.com/raphaelbleier/userstory-playwright-skill/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT"></a>
+</p>
+
+---
 
 Point your coding agent at a website codebase. It writes the user stories into an Excel sheet,
 turns each one into a Playwright test, runs them, and writes back what broke — with a real root
