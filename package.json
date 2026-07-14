@@ -1,6 +1,6 @@
 {
   "name": "userstory-playwright-skill",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Agent skill that derives user stories from a website codebase into Excel, tests them with Playwright, and writes bugs back into the sheet. Works with Claude Code, Codex, Kilo Code, OpenCode and GitHub Copilot CLI.",
   "type": "module",
   "license": "MIT",
