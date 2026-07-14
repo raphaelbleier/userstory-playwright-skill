@@ -1,0 +1,15 @@
+node_modules/
+.env
+.auth/
+
+# fixture run output
+fixtures/test-results/
+fixtures/playwright-report/
+fixtures/user-stories.xlsx
+
+test-results/
+playwright-report/
+blob-report/
+
+graphify-out/
+.DS_Store

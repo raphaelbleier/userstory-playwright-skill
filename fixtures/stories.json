@@ -1,0 +1,52 @@
+{
+  "stories": [
+    {
+      "id": "US-001",
+      "title": "Registered user can log in with valid credentials",
+      "role": "registered user",
+      "goal": "log in with my email and password",
+      "benefit": "I can reach my dashboard",
+      "priority": "Must",
+      "acceptanceCriteria": "Given I am on /login\nWhen I submit my correct email and password\nThen I am redirected to /dashboard and see \"Signed in as alice@example.com\"",
+      "preconditions": "an account exists for alice@example.com",
+      "requiresAuth": false,
+      "sourceFiles": "fixtures/demo-app/server.mjs"
+    },
+    {
+      "id": "US-002",
+      "title": "Wrong password is rejected with an error",
+      "role": "registered user",
+      "goal": "be told when my password is wrong",
+      "benefit": "I know to try again rather than assume the site is broken",
+      "priority": "Must",
+      "acceptanceCriteria": "Given I am on /login\nWhen I submit a correct email with a wrong password\nThen I stay on /login and see the alert \"Invalid email or password.\"",
+      "preconditions": "an account exists for alice@example.com",
+      "requiresAuth": false,
+      "sourceFiles": "fixtures/demo-app/server.mjs"
+    },
+    {
+      "id": "US-003",
+      "title": "Anonymous visitor cannot reach the dashboard",
+      "role": "anonymous visitor",
+      "goal": "be kept out of pages that need an account",
+      "benefit": "other people's data stays private",
+      "priority": "Must",
+      "acceptanceCriteria": "Given I am not logged in\nWhen I navigate to /dashboard\nThen I am redirected to /login",
+      "preconditions": "no session cookie",
+      "requiresAuth": false,
+      "sourceFiles": "fixtures/demo-app/server.mjs"
+    },
+    {
+      "id": "US-004",
+      "title": "Contact form rejects an invalid email address",
+      "role": "anonymous visitor",
+      "goal": "be told immediately when I mistype my email",
+      "benefit": "the reply actually reaches me instead of bouncing",
+      "priority": "Should",
+      "acceptanceCriteria": "Given I am on /contact\nWhen I submit \"notanemail\" as my email address\nThen the form is rejected and I see \"Please enter a valid email address.\"",
+      "preconditions": "none",
+      "requiresAuth": false,
+      "sourceFiles": "fixtures/demo-app/server.mjs"
+    }
+  ]
+}

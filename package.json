@@ -1,0 +1,55 @@
+{
+  "name": "userstory-playwright-skill",
+  "version": "0.1.0",
+  "description": "Agent skill that derives user stories from a website codebase into Excel, tests them with Playwright, and writes bugs back into the sheet. Works with Claude Code, Codex, Kilo Code, OpenCode and GitHub Copilot CLI.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Raphael Bleier",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raphaelbleier/userstory-playwright-skill.git"
+  },
+  "homepage": "https://github.com/raphaelbleier/userstory-playwright-skill#readme",
+  "bugs": {
+    "url": "https://github.com/raphaelbleier/userstory-playwright-skill/issues"
+  },
+  "keywords": [
+    "playwright",
+    "user-stories",
+    "e2e",
+    "testing",
+    "agent-skills",
+    "claude-code",
+    "codex",
+    "opencode",
+    "kilocode",
+    "copilot",
+    "excel",
+    "qa"
+  ],
+  "bin": {
+    "userstory-playwright-skill": "bin/cli.mjs"
+  },
+  "files": [
+    "bin/",
+    "skill/",
+    "adapters/",
+    "templates/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "demo": "node fixtures/demo-app/server.mjs"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "express": "^4.21.2"
+  }
+}

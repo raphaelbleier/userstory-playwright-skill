@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Full cycle against the demo app
+        # generates stories -> runs Playwright -> syncs the report into a real xlsx ->
+        # asserts the sheet reports exactly the one bug planted in the demo app
+        run: node test/verify-demo.mjs
+
+      - name: Installer smoke test
+        run: |
+          mkdir -p /tmp/target && cd /tmp/target
+          node "$GITHUB_WORKSPACE/bin/cli.mjs" init
+          test -f .agents/skills/user-story-testing/SKILL.md
+          test -f .claude/skills/user-story-testing/SKILL.md
+          test -f .kilocode/rules/user-story-testing.md
+          test -f .github/agents/user-story-testing.agent.md
+          test -f playwright.config.ts
+          grep -q "User Story Testing" AGENTS.md
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-artifacts
+          path: fixtures/test-results/
+          retention-days: 7
